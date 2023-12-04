@@ -54,7 +54,7 @@ def botao_2(x, y): #Função que cria o circulo (bola)
     t.pendown()
     t.circle(radius=35) #Desenha o circulo, Radius define o raio
 
-
+#A função abaixo responde a um clique do mouse na tela. Quando o evento de clique ocorre, a função definida é chamada e executada com base nas coordenadas do local do clique.
 turtle.Screen().onclick(botao_1, 1)  #Botão esquerdo do mouse
 turtle.Screen().onclick(botao_2, 3)   #Botão direito do mouse
 
