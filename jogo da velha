@@ -1,12 +1,13 @@
-import turtle 
-t = turtle.Turtle()
+import turtle #Chama a biblioteca turtle, permitndo utilizar as funcionalidades da biblioteca Turtle no Python
+t = turtle.Turtle() #Cria um objeto da classe Turtle chamado "t"
 
+#Desenha o tabuleiro
 
-t.pensize(4)
-t.penup()
-t.goto(-50, 100)
-t.pendown()
-t.forward(-50)
+t.pensize(4) #Grossura da linha
+t.penup() #Levanta a caneta
+t.goto(-50, 100) #Move o objeto da variável "t" para a posição dada na tela, O primeiro número (-50) representa a coordenada x e o segundo número (100) representa a coordenada y. Portanto, o objeto será movido 50 unidades para a esquerda e 100 unidades para cima em relação à sua posição atual.
+t.pendown() #Abaixa a caneta
+t.forward(-50) #desloca o objeto em 50 unidades na direção em que está apontando.
 t.forward(300)
 t.penup()
 t.goto(0, 0)
@@ -16,7 +17,7 @@ t.forward(300)
 t.penup()
 t.goto(0, 100)
 t.pendown()
-t.left(90)
+t.left(90) #Vira a esquerda 90 graus
 t.forward(100)
 t.forward(-300)
 t.penup()
@@ -24,14 +25,14 @@ t.goto(100, 100)
 t.pendown()
 t.forward(100)
 t.forward(-300)
-t.setheading(0)
+t.setheading(0) #define o ângulo da direção do objeto "t" para 0 graus, o que significa que o objeto ficará alinhado na direção de leste.
 
 
-def botao_1(x, y):
-    t.pensize(2)
-    t.color("blue")
+def botao_1(x, y): #Função que cria o X
+    t.pensize(2) #Define a grossura da linha
+    t.color("blue") #Define a cor do X
     t.penup()
-    t.goto(x, y)
+    t.goto(x, y) #faz com que a tartaruga "t" se mova para a posição especificada pelos valores "x" e "y". Onde "x" é a coordenada horizontal e "y" é a coordenada vertical.
     t.pendown()
     t.left(40)
     t.forward(-45)
@@ -45,17 +46,17 @@ def botao_1(x, y):
     t.setheading(0)
 
 
-def botao_2(x, y):
-    t.pensize(2)
-    t.color("red")
+def botao_2(x, y): #Função que cria o circulo (bola)
+    t.pensize(2) #Define a grossura da linha
+    t.color("red") #Define a cor do circulo
     t.penup()
     t.goto(x, y)
     t.pendown()
-    t.circle(radius=35)
+    t.circle(radius=35) #Desenha o circulo, Radius define o raio
 
 
-turtle.Screen().onclick(botao_1, 1)  # Botão esquerdo do mouse
-turtle.Screen().onclick(botao_2, 3)   # Botão direito do mouse
+turtle.Screen().onclick(botao_1, 1)  #Botão esquerdo do mouse
+turtle.Screen().onclick(botao_2, 3)   #Botão direito do mouse
 
 
-turtle.done()
+turtle.done() #É usado na para manter a janela de desenho aberta até que o usuário a feche manualmente. ele faz com que a janela não seja fechada imediatamente após a execução do código, permitindo que o usuário observe o desenho completo.
