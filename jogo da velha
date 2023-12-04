@@ -1,0 +1,61 @@
+import turtle 
+t = turtle.Turtle()
+
+
+t.pensize(4)
+t.penup()
+t.goto(-50, 100)
+t.pendown()
+t.forward(-50)
+t.forward(300)
+t.penup()
+t.goto(0, 0)
+t.pendown()
+t.forward(-100)
+t.forward(300)
+t.penup()
+t.goto(0, 100)
+t.pendown()
+t.left(90)
+t.forward(100)
+t.forward(-300)
+t.penup()
+t.goto(100, 100)
+t.pendown()
+t.forward(100)
+t.forward(-300)
+t.setheading(0)
+
+
+def botao_1(x, y):
+    t.pensize(2)
+    t.color("blue")
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.left(40)
+    t.forward(-45)
+    t.forward(90)
+    t.forward(-45)
+    t.left(90)
+    t.forward(-45)
+    t.forward(90)
+    t.forward(-45)
+    t.right(130)
+    t.setheading(0)
+
+
+def botao_2(x, y):
+    t.pensize(2)
+    t.color("red")
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+    t.circle(radius=35)
+
+
+turtle.Screen().onclick(botao_1, 1)  # Botão esquerdo do mouse
+turtle.Screen().onclick(botao_2, 3)   # Botão direito do mouse
+
+
+turtle.done()
