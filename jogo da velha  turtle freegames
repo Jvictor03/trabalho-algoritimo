@@ -1,60 +1,74 @@
-from turtle import *
+from turtle import * #Chama a biblioteca turtle, permitndo utilizar as funcionalidades da biblioteca Turtle no Python
 
-from freegames import line
+from freegames import line #importa a função "line" do módulo "freegames". Assim o código poderá utilizar a função "line" para desenhar linhas em um jogo.
 
 
-def tabuleiro():
-    #Desenhe o tabuleiro do jogo da velha.
-    line(-67, 200, -67, -200)
+def tabuleiro(): #Função que desenha o tabuleiro do jogo da velha.
+
+    line(-67, 200, -67, -200) #Esse comando desenha uma linha vertical na tela, começando no ponto (-67, 200) e terminando no ponto (-67, -200). O primeiro e o terceiro numero é no eixo X e o segundo e o quarto numero é no eixo Y.
     line(67, 200, 67, -200)
     line(-200, -67, 200, -67)
     line(-200, 67, 200, 67)
 
 
-def drawx(x, y):
-   #desenha o X
-    line(x, y, x + 133, y + 133)
-    line(x, y + 133, x + 133, y)
-    pensize(3)
-    color("blue")
-
-
-def drawo(x, y):
-    #desenha o Circulo
-    up()
-    goto(x + 67, y + 5)
-    down()
-    circle(62)
-    pensize(2)
-    color("red")
-
-
-def floor(value):
-    #define valor do tamanho do quadrado
-    return ((value + 200) // 133) * 133 - 200
-
-
-state = {'player': 0} #cria uma variavel chamada estado com a palavra chave player e valor 0
-players = [drawx, drawo] #cria uma variavel chamada players com os elementos desenhar X e desenhar O
-
-
-def tap(x, y):
-    #Desenha X ou Bola no canto tocado
-    x = floor(x)
-    y = floor(y)
-    player = state['player']
-    draw = players[player] 
+def drawx(x, y):                              #Função que desenha o X
   
-    draw(x, y)
-    update()
-    state['player'] = not player # atualiza o valor do estado do jogador para o oposto do valor atual. Por exemplo, se o valor atual for True, ele atualiza para False, e vice-versa.
+    line(x, y, x + 133, y + 133)              #Esse comando desenha uma linha na tela a partir do ponto (x, y) até o ponto (x + 133, y + 133).
+    line(x, y + 133, x + 133, y)
+    pensize(4)                                #Grossura da linha
+    color("blue")                             #Define cor do X
+
+
+def drawo(x, y):                              #Função que desenha o circulo
+    
+    up()                                      #Levanta a caneta
+    goto(x + 67, y + 5)                       #move um objeto ou cursor para uma posição específica na tela a partir de sua posição atual.
+    down()                                    #Abaixa a caneta
+    circle(62)                                #Desenha um circulo com raio 62
+    pensize(4)                                #Grossura da linha
+    color("red")                              #Define cor do circulo
+
+
+def floor(value):                             #arredonda um número para o número inteiro menor mais próximo.
+   
+    return ((value + 200) // 133) * 133 - 200 #Esse comando realiza alguns cálculos matemáticos. Aqui está como ele é executado passo a passo:
+                                              #A variável "value" é somada a 200.
+                                              #O resultado dessa soma é dividido por 133 usando a operação "//" para retornar apenas o resultado inteiro da divisão.
+                                              #O resultado da divisão é multiplicado novamente por 133.
+                                              #Por fim, subtrai-se 200 desse resultado final.
+                                              #Basicamente, esse comando calcula um valor arredondado para o múltiplo mais próximo de 133 que é maior ou igual ao valor original acrescido de 200.
+
+
+state = {'player': 0}                         #cria uma variavel chamada estado com a palavra chave player e valor 0
+players = [drawx, drawo]                      #cria uma variavel chamada players com os elementos desenhar X e desenhar O
+
+
+def tap(x, y):                                #Função que desenha X ou Bola no canto tocado
+    
+    x = floor(x)                              #O comando "x = floor(x)" arredonda o valor de x para o número inteiro mais próximo, que é menor ou igual a x. O resultado será atribuído novamente à variável x.
+                                              #Por exemplo, se x for 5.9, após executar o comando, x será igual a 5.0. Se x for -3.4, o resultado será -4.0.
+
+    y = floor(y)                              #O comando "y = floor(y)" arredonda o valor de "y" para o inteiro mais próximo menor ou igual a "y". Isso significa que se "y" for um número decimal, o comando irá arredondá-lo para baixo para o número inteiro mais próximo.
+   
+    player = state['player']                  #Esse comando atribui à variável "player" o valor correspondente ao estado atual ("state") do jogador. Isso permite que você acesse e manipule as propriedades do jogador dentro do código, utilizando a variável "player".
+    
+    draw = players[player]                    #Esse comando atribui a variável "draw" o valor correspondente ao elemento da lista "players" na posição "player".
+                                              #Por exemplo, se a lista "players" for [Bob, Alice, Carol] e "player" tiver o valor 1, o comando "draw = players[player]" irá atribuir à variável "draw" o valor "Alice".
+  
+    draw(x, y)                                #O comando "draw(x, y)" especifica que deve-se desenhar um objeto gráfico na posição (x, y) em um contexto de desenho, como por exemplo em um plano cartesiano. Os parâmetros "x" e "y" representam as coordenadas horizontais e verticais, respectivamente, onde o objeto será desenhado.
+    update()                                  #É usado para atualizar o objeto com base em novos valores ou condições informadas.
+    state['player'] = not player              #Atualiza o valor do estado do jogador para o oposto do valor atual. Por exemplo, se o valor atual for True, ele atualiza para False, e vice-versa.
     
    
 
-setup(420, 420, 370, 0)
-hideturtle()
-tracer(False)
-tabuleiro()
+setup(420, 420, 370, 0)                       #Configura a posição e o tamanho de uma janela gráfica. O primeiro parâmetro define a posição horizontal (coordenada X).
+                                                                                                     #O segundo parâmetro define a posição vertical (coordenada y). 
+                                                                                                     #O terceiro parâmetro define a largura da janela. 
+                                                                                                     #O quarto parâmetro define a altura da janela.
+
+hideturtle()                                  #O comando hideturtle() é usado na biblioteca Turtle do Python para ocultar a tartaruga na tela. Quando chamado, a tartaruga se torna invisível, mas continua se movendo e desenhando na tela.
+
+tabuleiro()                                   #Retorna o objeto que representa o tabuleiro.
 update()
-onscreenclick(tap)
-done()
+onscreenclick(tap)                            #É usado para responder a um clique do mouse na tela. Quando o evento de clique ocorre, a função "tap" definida pelo usuário é chamada e executada com base nas coordenadas do local do clique.
+done()                                        #é usado para finalizar um laço ou uma iteração. mantem a janela de desenho aberta até que o usuário a feche manualmente.
